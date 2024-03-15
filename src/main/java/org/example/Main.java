@@ -82,10 +82,14 @@ public class Main {
 
 
                     if (pontuacaoDealer > pontuacaoPlayer1 && pontuacaoDealer <= 21) {
+                        System.out.println("Pontuação Dealer: " + pontuacaoDealer);
                         System.out.println("O Dealer Ganhou!");
                     }else if (pontuacaoDealer.equals(pontuacaoPlayer1)){
+                        System.out.println("Pontuação Dealer: " + pontuacaoDealer);
+                        System.out.println("Sua Pontuação: " + pontuacaoPlayer1);
                         System.out.println("Empate!");
                     }else {
+                        System.out.println("Sua Pontuação: " + pontuacaoPlayer1);
                         System.out.println("O Jogador ganhou !");
                     }
 
