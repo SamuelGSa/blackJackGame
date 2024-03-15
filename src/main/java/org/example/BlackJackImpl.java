@@ -1,4 +1,4 @@
-package org.example.model.implementacao;
+package org.example;
 
 import org.example.model.Carta;
 

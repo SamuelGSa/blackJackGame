@@ -13,89 +13,89 @@ public class Main {
         Integer escolha;
         Integer escolhaNovaCarta;
 
-    do {
-        menu();
-        System.out.print("Escolha: ");
-        escolha = scanner().nextInt();
+        do {
+            menu();
+            System.out.print("Escolha: ");
+            escolha = scanner().nextInt();
 
-        if (escolha.equals(1)) {
-            var baralho = baralho();
-
-
-            System.out.println("====================");
-            System.out.println("Vamos Jogar !!!");
-            System.out.println("====================");
+            if (escolha.equals(1)) {
+                var baralho = baralho();
 
 
-            List<Carta> dealer = new ArrayList<>();
-            dealer.add(darCarta(baralho));
-            dealer.add(darCarta(baralho));
-            System.out.println("DEALER - Primeira carta: " + dealer.get(0).getValor() + " " + dealer.get(0).getNaipe());
-            System.out.println("DEALER - Segunda carta:  X");
-            Integer pontuacaoDealer = dealer.get(0).getValor() + dealer.get(1).getValor();
-            System.out.println("A pontuação do Dealer é: " + pontuacaoDealer);
-
-            List<Carta> player1 = new ArrayList<>();
-            player1.add(darCarta(baralho));
-            player1.add(darCarta(baralho));
-            System.out.println("player1: " + player1.get(0).getValor() + " " + player1.get(0).getNaipe());
-            System.out.println("player1: " + player1.get(1).getValor() + " " + player1.get(1).getNaipe());
-            Integer pontuacaoPlayer1 = player1.get(0).getValor() + player1.get(1).getValor();
-
-            do {
-                System.out.println("Sua pontuação é: " + pontuacaoPlayer1 + "\nDeseja outra carta?\n1 = Sim / 2 = Não");
-                System.out.print("Escolha: ");
-                escolhaNovaCarta = scanner().nextInt();
-
-                if (escolhaNovaCarta.equals(1)){
-                    var novaCarta = darCarta(baralho);
-                    pontuacaoPlayer1 = pontuacaoPlayer1 + novaCarta.getValor();
-
-                }
+                System.out.println("====================");
+                System.out.println("Vamos Jogar !!!");
+                System.out.println("====================");
 
 
-            }while (escolhaNovaCarta == 1);
-
-            if (pontuacaoPlayer1 > 21) {
-                System.out.println("Pontuação: " + pontuacaoDealer + " Voce Perdeu!");
-            } else if (pontuacaoPlayer1 == 21) {
-                System.out.println("BLACK JACK! VOCÊ GANHOU !");
-            } else {
-                System.out.println(" -----------------");
-                System.out.println("Agora é A vez do Dealer");
-
+                List<Carta> dealer = new ArrayList<>();
+                dealer.add(darCarta(baralho));
+                dealer.add(darCarta(baralho));
                 System.out.println("DEALER - Primeira carta: " + dealer.get(0).getValor() + " " + dealer.get(0).getNaipe());
-                System.out.println("DEALER - Segunda carta: " + dealer.get(1).getValor() + " " + dealer.get(1).getNaipe());
+                System.out.println("DEALER - Segunda carta:  X");
+                Integer pontuacaoDealer = dealer.get(0).getValor() + dealer.get(1).getValor();
+                System.out.println("A pontuação do Dealer é: " + pontuacaoDealer);
+
+                List<Carta> player1 = new ArrayList<>();
+                player1.add(darCarta(baralho));
+                player1.add(darCarta(baralho));
+                System.out.println("player1: " + player1.get(0).getValor() + " " + player1.get(0).getNaipe());
+                System.out.println("player1: " + player1.get(1).getValor() + " " + player1.get(1).getNaipe());
+                Integer pontuacaoPlayer1 = player1.get(0).getValor() + player1.get(1).getValor();
 
                 do {
+                    System.out.println("Sua pontuação é: " + pontuacaoPlayer1 + "\nDeseja outra carta?\n1 = Sim / 2 = Não");
+                    System.out.print("Escolha: ");
+                    escolhaNovaCarta = scanner().nextInt();
 
-                    if (pontuacaoDealer < pontuacaoPlayer1){
+                    if (escolhaNovaCarta.equals(1)){
                         var novaCarta = darCarta(baralho);
-                        System.out.println("Nova carta: " + novaCarta.getValor() + " " + novaCarta.getNaipe());
+                        pontuacaoPlayer1 = pontuacaoPlayer1 + novaCarta.getValor();
 
-                        pontuacaoDealer = pontuacaoDealer + novaCarta.getValor();
-                        System.out.println("Pontuação Dealer: " + pontuacaoDealer);
                     }
 
 
-                }while (pontuacaoDealer < pontuacaoPlayer1);
+                }while (escolhaNovaCarta == 1);
+
+                if (pontuacaoPlayer1 > 21) {
+                    System.out.println("Pontuação: " + pontuacaoDealer + " Voce Perdeu!");
+                } else if (pontuacaoPlayer1 == 21) {
+                    System.out.println("BLACK JACK! VOCÊ GANHOU !");
+                } else {
+                    System.out.println(" -----------------");
+                    System.out.println("Agora é A vez do Dealer");
+
+                    System.out.println("DEALER - Primeira carta: " + dealer.get(0).getValor() + " " + dealer.get(0).getNaipe());
+                    System.out.println("DEALER - Segunda carta: " + dealer.get(1).getValor() + " " + dealer.get(1).getNaipe());
+
+                    do {
+
+                        if (pontuacaoDealer < pontuacaoPlayer1){
+                            var novaCarta = darCarta(baralho);
+                            System.out.println("Nova carta: " + novaCarta.getValor() + " " + novaCarta.getNaipe());
+
+                            pontuacaoDealer = pontuacaoDealer + novaCarta.getValor();
+                            System.out.println("Pontuação Dealer: " + pontuacaoDealer);
+                        }
 
 
-                if (pontuacaoDealer > pontuacaoPlayer1 && pontuacaoDealer <= 21) {
-                    System.out.println("O Dealer Ganhou!");
-                }else if (pontuacaoDealer.equals(pontuacaoPlayer1)){
-                    System.out.println("Empate!");
-                }else {
-                    System.out.println("O Jogador ganhou !");
+                    }while (pontuacaoDealer < pontuacaoPlayer1);
+
+
+                    if (pontuacaoDealer > pontuacaoPlayer1 && pontuacaoDealer <= 21) {
+                        System.out.println("O Dealer Ganhou!");
+                    }else if (pontuacaoDealer.equals(pontuacaoPlayer1)){
+                        System.out.println("Empate!");
+                    }else {
+                        System.out.println("O Jogador ganhou !");
+                    }
+
                 }
+
 
             }
 
 
-        }
-
-
-    }while (escolha !=4);
+        }while (escolha !=4);
 
     }
 
